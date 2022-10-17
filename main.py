@@ -102,7 +102,7 @@ def write_csv(filename, data):
     if os.path.isfile(filename) == False:
         with open(filename, 'w', newline='', encoding='utf-8') as csvfile:
             spamwriter = csv.writer(csvfile, delimiter=' ', quotechar='|', quoting=csv.QUOTE_MINIMAL)
-            spamwriter.writerow(['date', '风险', '省','市','区'])
+            spamwriter.writerow(['date', '风险', '省','市','区','病例街道数量'])
        
     with open(filename, 'a', newline='', encoding='utf-8') as csvfile:
         spamwriter = csv.writer(csvfile, delimiter=' ', quotechar='|', quoting=csv.QUOTE_MINIMAL)
@@ -115,7 +115,7 @@ def write_csv(filename, data):
             else:
                 dataToWrite = data['lowlist']
             for row_data in dataToWrite:
-                spamwriter.writerow([date, risk, row_data['province'], row_data['city'], row_data['county']])
+                spamwriter.writerow([date, risk, row_data['province'], row_data['city'], row_data['county'], len(row_data['communitys'])])
     
 def write_json(filename, data):
     with open(filename, 'w', newline='', encoding='utf-8') as jsonfile:
