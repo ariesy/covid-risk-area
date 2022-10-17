@@ -50,7 +50,8 @@ def get_risk_zones():
                             headers=headers, data=json.dumps(data), verify=False)
         if res.status_code == 200:
             res_json = res.json()
-            write_json('data.json', res_json)
+            localtime = time.localtime()
+            write_json(f'data-{localtime.tm_year}-{localtime.tm_mon}-{localtime.tm_mday}.json', res_json)
             msg = '目前有高风险地区{}个，中风险地区{}个，以下所列地区为中高风险地区。\n'.format(
                 res_json['data']['hcount'], res_json['data']['mcount'])
             print(msg)
