@@ -4,9 +4,9 @@
 name: get-risk-zone
 on:
   workflow_dispatch:
-  schedule:
+  #schedule:
   # runs every day 1 am.
-    - cron: "0 17 * * *"
+  #  - cron: "0 17 * * *"
 
 jobs:
   get-data:
